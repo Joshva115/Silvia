@@ -1,0 +1,10 @@
+.custom-btn {
+    /*Kraken Purple*/
+    background-color: #5848d5 !important; 
+    transition-duration: 0.1s !important; 
+    color: #ffff !important;
+}
+.custom-btn:hover {
+    /*Lighter version of Kraken Purple*/
+    background-color: #8478dc !important; 
+}

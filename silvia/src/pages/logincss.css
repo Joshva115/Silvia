@@ -1,0 +1,8 @@
+.link-warning {
+    color: #4d4d4e !important;
+    text-decoration-color: #5848d5 !important
+}
+
+.link-warning:hover {
+    color: #bababa !important;
+}
