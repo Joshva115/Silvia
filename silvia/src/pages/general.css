@@ -8,3 +8,11 @@
     /*Lighter version of Kraken Purple*/
     background-color: #8478dc !important; 
 }
+
+/*Highlights to the user an error*/
+input.input-error, select.input-error{
+    border-color: #ff0000;
+}
+p.error {
+    color:red;
+}
