@@ -2,19 +2,20 @@ import React from "react";
 import { Formik } from "formik";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import InputGroup from "react-bootstrap/InputGroup";
 import Container from "react-bootstrap/Container";
-import * as yup from "yup";
 import { loginSchema } from "../schemas/validationSchema";
+
+const onSubmit = (values, actions) => {
+  console.log(values);
+  actions.resetForm();
+};
 
 const test = () => {
   return (
     <Formik
       validationSchema={loginSchema}
-      onSubmit={console.log}
+      onSubmit={onSubmit}
       initialValues={{
         email: "",
         password: "",
@@ -29,7 +30,7 @@ const test = () => {
         isValid,
         errors,
       }) => (
-        <Form noValidate onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <Container className="d-flex align-items-center justify-content-center py-5">
             <Card className="card shadow-lg p-5">
               <Form>
@@ -47,7 +48,13 @@ const test = () => {
                     onChange={handleChange}
                     isInvalid={!!errors.email}
                     onBlur={handleBlur}
+                    className={
+                      errors.email && touched.email ? "input-error" : ""
+                    }
                   />
+                  {errors.email && touched.email && (
+                    <p className="error">{errors.email}</p>
+                  )}
                   <Form.Text className="text-muted">
                     We'll <b>never</b> share your data with anyone else.
                   </Form.Text>
@@ -64,7 +71,13 @@ const test = () => {
                     onChange={handleChange}
                     isInvalid={!!errors.password}
                     onBlur={handleBlur}
+                    className={
+                      errors.password && touched.password ? "input-error" : ""
+                    }
                   />
+                  {errors.password && touched.password && (
+                    <p className="error">{errors.password}</p>
+                  )}
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Check type="checkbox" label="Remember me" />
