@@ -46,7 +46,6 @@ const test = () => {
                     name="email"
                     value={values.email}
                     onChange={handleChange}
-                    isInvalid={!!errors.email}
                     onBlur={handleBlur}
                     className={
                       errors.email && touched.email ? "input-error" : ""
@@ -69,7 +68,6 @@ const test = () => {
                     name="password"
                     value={values.password}
                     onChange={handleChange}
-                    isInvalid={!!errors.password}
                     onBlur={handleBlur}
                     className={
                       errors.password && touched.password ? "input-error" : ""
