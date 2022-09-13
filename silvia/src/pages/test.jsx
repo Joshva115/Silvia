@@ -5,9 +5,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { loginSchema } from "../schemas/validationSchema";
-
-const onSubmit = (values, actions) => {
+import "./general.css";
+const onSubmit = async (values, actions) => {
   console.log(values);
+  console.log(actions);
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   actions.resetForm();
 };
 
@@ -31,141 +33,91 @@ const test = () => {
         errors,
       }) => (
         <Form onSubmit={handleSubmit}>
-          <Container className="d-flex align-items-center justify-content-center py-5">
-            <Card className="card shadow-lg p-5">
-              <Form>
-                <Card.Title className="pb-2 display-5 mt-5 text-center">
-                  Login Test
-                </Card.Title>
-                <Form.Group className="mb-3 pt-3">
-                  <Form.Label className="lead">Email address</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="Email Address"
-                    aria-describedby="inputGroupPrepend"
-                    name="email"
-                    value={values.email}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={
-                      errors.email && touched.email ? "input-error" : ""
-                    }
-                  />
-                  {errors.email && touched.email && (
-                    <p className="error">{errors.email}</p>
-                  )}
-                  <Form.Text className="text-muted">
-                    We'll <b>never</b> share your data with anyone else.
-                  </Form.Text>
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                  <Form.Label className="lead">Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    id="password"
-                    name="password"
-                    value={values.password}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={
-                      errors.password && touched.password ? "input-error" : ""
-                    }
-                  />
-                  {errors.password && touched.password && (
-                    <p className="error">{errors.password}</p>
-                  )}
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Check type="checkbox" label="Remember me" />
-                </Form.Group>
-                <Form.Group className="col-md-12 text-center pt-1">
-                  <Button
-                    variant="btn btn-lg w-100"
-                    className="custom-btn"
-                    type="submit"
-                  >
-                    Login
-                  </Button>
-                </Form.Group>
-                <Form.Group className="pb-2">
-                  <Container className="text-left">
-                    <Card className="text-center mt-3">
-                      <Card.Footer className="border-0">
-                        <Card.Body className="text-center">
-                          {" "}
-                          Don't have an account?{" "}
-                          <a href="/register" className="text-dark">
-                            Create One
-                          </a>
-                        </Card.Body>
-                      </Card.Footer>
-                    </Card>
-                  </Container>
-                </Form.Group>
-              </Form>
-            </Card>
-          </Container>
-
-          {/* <Container>
-            <Row className="mb-3">
-              <Form.Group
-                as={Col}
-                md="12"
-                controlId="validationEmail"
-                className="pb-4"
-              >
-                <Form.Label>Email Address</Form.Label>
-                <InputGroup hasValidation className="pt-2">
-                  <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                  <Form.Control
-                    type="email"
-                    placeholder="Email Address"
-                    aria-describedby="inputGroupPrepend"
-                    name="email"
-                    value={values.email}
-                    onChange={handleChange}
-                    isInvalid={!!errors.email}
-                  />
-                  <Form.Control.Feedback type="invalid" tooltip>
-                    {errors.email}
-                  </Form.Control.Feedback>
-                </InputGroup>
+          <Container>
+            <h3 class="text-left display-5 pt-4">
+              Create Account Test Environment
+            </h3>
+            <Form className="row g-2 mt-3">
+              <Form.Group className="mb-1 col-md-6">
+                <Form.Label className="lead">First Name</Form.Label>
+                <Form.Control id="name" type="text" placeholder="Name" />
               </Form.Group>
-
-              <Form.Group
-                as={Col}
-                md="12"
-                controlId="validationFormikUsername2"
-              >
-                <Form.Label>Password</Form.Label>
-                <InputGroup hasValidation>
-                  <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    aria-describedby="inputGroupPrepend"
-                    name="password"
-                    value={values.password}
-                    onChange={handleChange}
-                    isInvalid={!!errors.password}
-                  />
-                  <Form.Control.Feedback type="invalid" tooltip>
-                    {errors.password}
-                  </Form.Control.Feedback>
-                </InputGroup>
+              <Form.Group className="col-md-6 w-10">
+                <Form.Label className="lead">Surname</Form.Label>
+                <Form.Control id="surname" type="text" placeholder="Surname" />
               </Form.Group>
-              <Form.Group className="col-md-12 text-center pt-4">
+              <Form.Group className="col-md-6 w-10">
+                <Form.Label className="lead">Email Address</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Email Address"
+                  id="email"
+                />
+              </Form.Group>
+              <Form.Group className="mb-1 col-md-6">
+                <Form.Label className="lead">Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Username"
+                  id="username"
+                />
+              </Form.Group>
+              <Form.Group className="mb-1 col-md-4">
+                <Form.Label className="lead">Address</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="1234 Main St"
+                  id="address"
+                />
+                <Form.Text className="text-muted">
+                  We'll <b>never</b> share your information with anyone else.
+                </Form.Text>
+              </Form.Group>
+              <Form.Group className="col-md-4">
+                <Form.Label className="lead">City</Form.Label>
+                <Form.Control
+                  type="text"
+                  id="city"
+                  placeholder="Sydney"
+                  maxLength={10}
+                />
+              </Form.Group>
+              <Form.Group className="col-md-4">
+                <Form.Label className="lead">Zip</Form.Label>
+                <Form.Control
+                  type="text"
+                  id="zip"
+                  placeholder="2567"
+                  maxLength={4}
+                />
+              </Form.Group>
+              <Form.Group className="mb-1 col-md-6">
+                <Form.Label className="lead">Password</Form.Label>
+                <Form.Control
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                />
+              </Form.Group>
+              <Form.Group className="col-md-6 w-10">
+                <Form.Label className="lead">Confirm Password</Form.Label>
+                <Form.Control
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="Password"
+                />
+              </Form.Group>
+              <Form.Group class="col-md-12 text-center pt-3">
                 <Button
-                  variant="btn btn-lg w-50"
+                  variant="btn btn-lg w-75"
                   className="custom-btn"
                   type="submit"
                 >
-                  Login
+                  Test Environment
                 </Button>
               </Form.Group>
-            </Row>
-          </Container> */}
+            </Form>
+          </Container>
         </Form>
       )}
     </Formik>
