@@ -8,7 +8,7 @@ const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 const postCode =
   /^(0[289][0-9]{2})|([1345689][0-9]{3})|(2[0-8][0-9]{2})|(290[0-9])|(291[0-4])|(7[0-4][0-9]{2})|(7[8-9][0-9]{2})$/;
 //Here are the rules for Australian postcodes:
-export const basicSchema = yup.object().shape({
+export const registerSchema = yup.object().shape({
   name: yup
     .string("Please enter your name")
     .required("Please enter your name")
