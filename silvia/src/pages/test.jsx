@@ -167,7 +167,7 @@ const test = () => {
                   id="password"
                   type="password"
                   placeholder="Password"
-                  value={values.address}
+                  value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={
